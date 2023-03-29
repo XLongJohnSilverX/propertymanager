@@ -1,7 +1,13 @@
 package com.castawaysoftware.propertymanager;
 
-public class Address {
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import org.hibernate.annotations.Type;
 
+@Entity
+public class Address {
+    private @Id @GeneratedValue Long id;
     private String streetAddress;
     private String city;
     private String state;
@@ -27,10 +33,10 @@ public class Address {
             String state, String zip)
     {
         
-        streetAddress = streetAddr;
+        this.streetAddress = streetAddr;
         this.city = city;
         this.state = state;
-        zipCode = zip;
+        this.zipCode = zip;
     }
 
     
@@ -91,5 +97,13 @@ public class Address {
         this.zipCode = zipCode;
     }
 
-
+    @Override
+    public String toString() {
+        return "Address{" +
+                "streetAddress='" + streetAddress + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                '}';
+    }
 }
