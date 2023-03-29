@@ -1,5 +1,6 @@
-package com.castawaysoftware.propertymanager;
+package com.castawaysoftware.propertymanager.data;
 
+import com.castawaysoftware.propertymanager.repositories.PropertyRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;

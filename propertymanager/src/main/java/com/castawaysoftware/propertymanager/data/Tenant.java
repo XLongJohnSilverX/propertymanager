@@ -1,4 +1,4 @@
-package com.castawaysoftware.propertymanager;
+package com.castawaysoftware.propertymanager.data;
 
 
 import jakarta.persistence.Entity;
