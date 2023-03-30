@@ -58,9 +58,6 @@ public class PropertyController {
      * After save, it sends back the created Property
      * @param newProperty
      * @return Property
-     *
-     *
-     *
      * */
     @PostMapping("/property/")
     Property addProperty(@RequestBody Property newProperty) {

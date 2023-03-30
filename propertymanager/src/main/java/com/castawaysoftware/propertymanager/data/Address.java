@@ -5,12 +5,33 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import org.hibernate.annotations.Type;
 
+/**
+ * <h1>Address</h1>
+ * A basic object to hold all relevant data for an Address
+ * this to insure we can validate Addresses and use them in the future
+ */
 @Entity
 public class Address {
+    /**
+     * Id of Address
+     * @see <a href="https://docs.oracle.com/javaee/6/api/javax/persistence/GeneratedValue.html">@GeneratedValue</a>
+     */
     private @Id @GeneratedValue Long id;
+    /**
+     * Street Address ex: 435 E 18th St
+     */
     private String streetAddress;
+    /**
+     * City of Address
+     */
     private String city;
+    /**
+     * State of Address
+     */
     private String state;
+    /**
+     * Zip Code
+     */
     private String zipCode;
     
     /**
@@ -97,6 +118,10 @@ public class Address {
         this.zipCode = zipCode;
     }
 
+    /**
+     * Sends Address as a JSON object in a String format to whoever requested it
+     * @return String of Address
+     */
     @Override
     public String toString() {
         return "Address{" +

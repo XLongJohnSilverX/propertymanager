@@ -10,6 +10,11 @@ import org.springframework.context.annotation.Configuration;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Load Dummy Data
+ *
+ * Creates Dummy data for API testing
+ */
 @Configuration
 public class LoadDummyData {
 
