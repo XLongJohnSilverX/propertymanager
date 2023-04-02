@@ -2,6 +2,7 @@ package com.castawaysoftware.propertymanager.controllers;
 
 import com.castawaysoftware.propertymanager.data.Property;
 import com.castawaysoftware.propertymanager.repositories.PropertyRepository;
+import com.castawaysoftware.propertymanager.services.PropertyService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,49 +27,48 @@ import java.util.List;
 @RestController
 public class PropertyController {
     private final PropertyRepository PROPERTY_REPOSITORY;
+    private final PropertyService PROPERTY_SERVICE;
 
-
-    public PropertyController(PropertyRepository propertyRepository) {
+    public PropertyController(PropertyRepository propertyRepository, PropertyService propertyService) {
         this.PROPERTY_REPOSITORY = propertyRepository;
+        this.PROPERTY_SERVICE = propertyService;
     }
 
     /**
      * <b>GetMapping all properties</b>
-     * Uses PropertyRepository to get all Properties in database
+     * Uses PROPERTY_SERVICE to call PropertyRepository to get all Properties from the Database.
      * @return <code>List<Property></code>
      */
     @GetMapping("/property/")
    public List<Property> getAllProperties() {
-        return PROPERTY_REPOSITORY.findAll();
+    return PROPERTY_SERVICE.getAllProperties();
     }
 
     /**
-     * Uses PropertyRepository to get a single Property from database by Id.
+     * Uses PropertyService to get a single Property from Repository by Id.
+     * @param id Long Id of Property client requests
      * @return List<Property>
      **/
     @GetMapping("/property/{id}")
     Property getPropertyById(@PathVariable Long id) {
-        return PROPERTY_REPOSITORY.findById(id).get();
+        return PROPERTY_SERVICE.getPropertyById(id);
     }
 
     /**
      * <b>Add Property</b>
-     * Client sends newProperty without an id, the program checks for other properties using PropertyRepository existsByName with the same name.
-     * If there are no properties with the same name, it uses PropertyRepository to save newProperty\
-     * After save, it sends back the created Property
+     * Sends newProperty to PropertyService to validate data and save new property
      * @param newProperty
      * @return Property
      * */
     @PostMapping("/property/")
-    Property addProperty(@RequestBody Property newProperty) {
+    Property addProperty( @RequestBody Property newProperty) {
         //check to see if name already exsits if it does return Null
-        if (PROPERTY_REPOSITORY.existsByName(newProperty.getName())) {
-            return null;
-        }
+       return PROPERTY_SERVICE.addProperty(newProperty);
+    }
+    @PutMapping("/property/{id}")
+    Property updateProperty(@PathVariable Long id,@RequestBody Property updatedProperty){
 
-        PROPERTY_REPOSITORY.save(newProperty);
-        return PROPERTY_REPOSITORY.findById(newProperty.getId()).get();
-
+        return PROPERTY_SERVICE.updateProperty(id, updatedProperty);
     }
 
 }

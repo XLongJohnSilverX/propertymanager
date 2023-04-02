@@ -2,3 +2,4 @@ com.castawaysoftware.propertymanager
 com.castawaysoftware.propertymanager.controllers
 com.castawaysoftware.propertymanager.data
 com.castawaysoftware.propertymanager.repositories
+com.castawaysoftware.propertymanager.services
