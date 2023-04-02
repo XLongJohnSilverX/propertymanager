@@ -95,6 +95,13 @@ public class PropertyService {
         return updatedProperty;
     }
 
+    /**
+     * Sends ID of property to be deleted to repository to delete
+     * @param id ID of property to be deleted
+     */
+    public void deleteProperty(long id){
+        PROPERTY_REPOSITORY.deleteById(id);
+    }
 
 
 }

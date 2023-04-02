@@ -8,5 +8,7 @@ public interface PropertyRepository extends JpaRepository<Property, Long> {
 
      boolean existsByName(String name);
 
+     void deleteById(long id);
+
 
 }

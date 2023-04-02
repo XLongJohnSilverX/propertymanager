@@ -49,7 +49,7 @@ public class PropertyController {
      * @param id Long Id of Property client requests
      * @return List<Property>
      **/
-    @GetMapping("/property/{id}")
+    @GetMapping("/property/{id}/")
     Property getPropertyById(@PathVariable Long id) {
         return PROPERTY_SERVICE.getPropertyById(id);
     }
@@ -57,18 +57,34 @@ public class PropertyController {
     /**
      * <b>Add Property</b>
      * Sends newProperty to PropertyService to validate data and save new property
-     * @param newProperty
-     * @return Property
+     * @param newProperty all the data for the new property to send to service to be created
+     * @return New property from database
      * */
     @PostMapping("/property/")
     Property addProperty( @RequestBody Property newProperty) {
-        //check to see if name already exsits if it does return Null
+
        return PROPERTY_SERVICE.addProperty(newProperty);
     }
-    @PutMapping("/property/{id}")
+
+    /**
+     * Sends Id and updatedProperty to Property Service to update said property
+     * @param id Id of property being updated
+     * @param updatedProperty Property object will all updated fields and unchanged fields
+     * @return returns updatedProperty but from DB to ensure changes were saved
+     */
+    @PutMapping("/property/{id}/")
     Property updateProperty(@PathVariable Long id,@RequestBody Property updatedProperty){
 
         return PROPERTY_SERVICE.updateProperty(id, updatedProperty);
+    }
+
+    /**
+     * Takes id of property to be deleted and sends it to Property Service to delete
+     * @param id ID of property to be deleted
+     */
+    @DeleteMapping("/property/{id}/")
+    void deletePropertyById(@PathVariable Long id){
+        PROPERTY_SERVICE.deleteProperty(id);
     }
 
 }
