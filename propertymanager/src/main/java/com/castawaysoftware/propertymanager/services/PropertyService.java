@@ -52,7 +52,9 @@ public class PropertyService {
      * */
 
    public Property addProperty( Property newProperty) {
-        /**check to see if name already exists, if it does return Null */
+        /**
+         * check to see if name already exists, if it does return Null
+         */
         if (PROPERTY_REPOSITORY.existsByName(newProperty.getName())) {
             return null;
         }
