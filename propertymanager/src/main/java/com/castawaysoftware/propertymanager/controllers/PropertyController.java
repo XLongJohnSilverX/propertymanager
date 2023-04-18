@@ -39,6 +39,8 @@ public class PropertyController {
      * Uses PROPERTY_SERVICE to call PropertyRepository to get all Properties from the Database.
      * @return <code>List<Property></code>
      */
+
+    @CrossOrigin
     @GetMapping("/property/")
    public List<Property> getAllProperties() {
     return PROPERTY_SERVICE.getAllProperties();
@@ -49,6 +51,7 @@ public class PropertyController {
      * @param id Long Id of Property client requests
      * @return List<Property>
      **/
+    @CrossOrigin
     @GetMapping("/property/{id}/")
     Property getPropertyById(@PathVariable Long id) {
         return PROPERTY_SERVICE.getPropertyById(id);
@@ -58,12 +61,13 @@ public class PropertyController {
      * <b>Add Property</b>
      * Sends newProperty to PropertyService to validate data and save new property
      * @param newProperty all the data for the new property to send to service to be created
-     * @return New property from database
+     * @return New property id from database
      * */
+    @CrossOrigin
     @PostMapping("/property/")
-    Property addProperty( @RequestBody Property newProperty) {
+    Long addProperty( @RequestBody Property newProperty) {
 
-       return PROPERTY_SERVICE.addProperty(newProperty);
+       return PROPERTY_SERVICE.addProperty(newProperty).getId();
     }
 
     /**
@@ -72,9 +76,10 @@ public class PropertyController {
      * @param updatedProperty Property object will all updated fields and unchanged fields
      * @return returns updatedProperty but from DB to ensure changes were saved
      */
+    @CrossOrigin
     @PutMapping("/property/{id}/")
     Property updateProperty(@PathVariable Long id,@RequestBody Property updatedProperty){
-
+        System.out.println(updatedProperty.toString());
         return PROPERTY_SERVICE.updateProperty(id, updatedProperty);
     }
 
@@ -82,6 +87,7 @@ public class PropertyController {
      * Takes id of property to be deleted and sends it to Property Service to delete
      * @param id ID of property to be deleted
      */
+    @CrossOrigin
     @DeleteMapping("/property/{id}/")
     void deletePropertyById(@PathVariable Long id){
         PROPERTY_SERVICE.deleteProperty(id);

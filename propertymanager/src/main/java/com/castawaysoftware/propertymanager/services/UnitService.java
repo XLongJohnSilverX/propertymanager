@@ -36,7 +36,7 @@ public class UnitService {
      * @return Unit Object of requested ID
      */
     public Unit getUnitById(Long id){
-        return UNIT_REPOSITORY.getReferenceById(id);
+        return UNIT_REPOSITORY.findById(id).get();
     }
 
     /**
@@ -69,11 +69,42 @@ public class UnitService {
         if (oldUnit.getPetList() != updatedUnit.getPetList()){
             oldUnit.setPetList(updatedUnit.getPetList());
         }
+        if (oldUnit.isVacant() != updatedUnit.isVacant()){
+            oldUnit.setVacant(updatedUnit.isVacant());
+        }
         if (oldUnit.getTenantList() != updatedUnit.getTenantList()){
             oldUnit.setTenantList(updatedUnit.getTenantList());
         }
+        if (oldUnit.isAllowsPets() != updatedUnit.isAllowsPets()){
+            oldUnit.setAllowsPets(updatedUnit.isAllowsPets());
+        }
+        if (oldUnit.getNumberOfBeds() != updatedUnit.getNumberOfBeds()){
+            oldUnit.setNumberOfBeds(updatedUnit.getNumberOfBeds());
+        }
+        if (oldUnit.getNumberOfBaths() != updatedUnit.getNumberOfBaths()){
+            oldUnit.setNumberOfBaths(updatedUnit.getNumberOfBaths());
+        }
+        if (oldUnit.getSquareFeet() != updatedUnit.getSquareFeet()){
+            oldUnit.setSquareFeet(updatedUnit.getSquareFeet());
+        }
+        if (oldUnit.getAmenities() != updatedUnit.getAmenities()){
+            oldUnit.setAmenities(updatedUnit.getAmenities());
+        }
+        if (oldUnit.getMonthlyRent() != updatedUnit.getMonthlyRent()){
+            oldUnit.setMonthlyRent(updatedUnit.getMonthlyRent());
+        }
+        if (oldUnit.getApplicationFee() != updatedUnit.getApplicationFee()){
+            oldUnit.setApplicationFee(updatedUnit.getApplicationFee());
+        }
+        if (oldUnit.getSecurityDeposit() != updatedUnit.getSecurityDeposit()){
+            oldUnit.setSecurityDeposit(updatedUnit.getSecurityDeposit());
+        }
+        if (oldUnit.getUnitDescription() != updatedUnit.getUnitDescription()){
+            oldUnit.setUnitDescription(updatedUnit.getUnitDescription());
+        }
 
-        return updatedUnit;
+
+        return UNIT_REPOSITORY.save(UNIT_REPOSITORY.findById(updatedUnit.getId()).get());
     }
 
     /**

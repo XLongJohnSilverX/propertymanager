@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+
+
 /**
  * Endpoint for all Requests related to a unit object
  */
@@ -21,6 +23,7 @@ public class UnitController {
      * This GET Endpoint calls the User Service to fetch ALL units from Database
      * @return
      */
+
     @GetMapping("/unit/")
      List<Unit> getAllUnits(){
         return UNIT_SERVICE.getAllUnits();
@@ -31,6 +34,8 @@ public class UnitController {
      * @param id ID of unit requested
      * @return Unit Object requested
      */
+    @CrossOrigin
+
     @GetMapping("/unit/{id}/")
      Unit getUnitById(@PathVariable Long id){
         return UNIT_SERVICE.getUnitById(id);
@@ -50,6 +55,7 @@ public class UnitController {
      * @param updatedUnit
      * @return
      */
+    @CrossOrigin
     @PutMapping("/unit/{id}/")
      Unit updateUnitById(@RequestBody Unit updatedUnit){
         return UNIT_SERVICE.updateUnit(updatedUnit);

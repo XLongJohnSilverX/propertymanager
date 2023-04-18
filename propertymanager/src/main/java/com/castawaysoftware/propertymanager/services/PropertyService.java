@@ -82,6 +82,7 @@ public class PropertyService {
              */
             if (PROPERTY_REPOSITORY.findById(id).get().getName() != updatedProperty.getName()){
                 PROPERTY_REPOSITORY.findById(id).get().setName(updatedProperty.getName());
+                System.out.println(PROPERTY_REPOSITORY.findById(id).toString());
             }
             if (PROPERTY_REPOSITORY.findById(id).get().getAddress() != updatedProperty.getAddress()){
                 PROPERTY_REPOSITORY.findById(id).get().setAddress(updatedProperty.getAddress());
@@ -94,7 +95,8 @@ public class PropertyService {
             }
 
         }
-        return updatedProperty;
+        System.out.println("Created new property: "+PROPERTY_REPOSITORY.findById(id).get().toString());
+        return PROPERTY_REPOSITORY.save(PROPERTY_REPOSITORY.findById(id).get());
     }
 
     /**

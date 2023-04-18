@@ -37,10 +37,38 @@ public class Unit {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Pet> petList;
 
+    private boolean isVacant;
+    private boolean allowsPets;
+
+    private int numberOfBeds;
+
+    private double numberOfBaths;
+
+    private int squareFeet;
+
+
+    private List<String> amenities;
+
+    private List<String> appliances;
+
+    private int monthlyRent;
+
+    private int applicationFee;
+
+    private int securityDeposit;
+
+    private String unitDescription;
+
     /**
      * Empty Constructor
      */
     public Unit() {
+    }
+
+    public Unit(String unitIdentifier, List<Tenant> tenantList, List<Pet> petList) {
+        this.unitIdentifier = unitIdentifier;
+        this.tenantList = tenantList;
+        this.petList = petList;
     }
 
     /**
@@ -50,10 +78,30 @@ public class Unit {
      * @param tenantList
      * @param petList
      */
-    public Unit(String unitIdentifier, List<Tenant> tenantList, List<Pet> petList) {
+
+    public Unit(String unitIdentifier, List<Tenant> tenantList, List<Pet> petList, boolean isVacant, boolean allowsPets, int numberOfBeds, double numberOfBaths, int squareFeet, List<String> amenities, List<String> appliances, int monthlyRent, int applicationFee, int securityDeposit, String unitDescription) {
         this.unitIdentifier = unitIdentifier;
         this.tenantList = tenantList;
         this.petList = petList;
+        this.isVacant = isVacant;
+        this.allowsPets = allowsPets;
+        this.numberOfBeds = numberOfBeds;
+        this.numberOfBaths = numberOfBaths;
+        this.squareFeet = squareFeet;
+        this.amenities = amenities;
+        this.appliances = appliances;
+        this.monthlyRent = monthlyRent;
+        this.applicationFee = applicationFee;
+        this.securityDeposit = securityDeposit;
+        this.unitDescription = unitDescription;
+    }
+
+    /**
+     * Created a unit with only unit identifer
+     * @param unitIdentifier
+     */
+    public Unit(String unitIdentifier) {
+        this.unitIdentifier = unitIdentifier;
     }
 
     /**
@@ -120,6 +168,94 @@ public class Unit {
         this.petList = petList;
     }
 
+    public boolean isVacant() {
+        return isVacant;
+    }
+
+    public void setVacant(boolean vacant) {
+        isVacant = vacant;
+    }
+
+    public boolean isAllowsPets() {
+        return allowsPets;
+    }
+
+    public void setAllowsPets(boolean allowsPets) {
+        this.allowsPets = allowsPets;
+    }
+
+    public int getNumberOfBeds() {
+        return numberOfBeds;
+    }
+
+    public void setNumberOfBeds(int numberOfBeds) {
+        this.numberOfBeds = numberOfBeds;
+    }
+
+    public double getNumberOfBaths() {
+        return numberOfBaths;
+    }
+
+    public void setNumberOfBaths(double numberOfBaths) {
+        this.numberOfBaths = numberOfBaths;
+    }
+
+    public int getSquareFeet() {
+        return squareFeet;
+    }
+
+    public void setSquareFeet(int squareFeet) {
+        this.squareFeet = squareFeet;
+    }
+
+    public List<String> getAmenities() {
+        return amenities;
+    }
+
+    public void setAmenities(List<String> amenities) {
+        this.amenities = amenities;
+    }
+
+    public List<String> getAppliances() {
+        return appliances;
+    }
+
+    public void setAppliances(List<String> appliances) {
+        this.appliances = appliances;
+    }
+
+    public int getMonthlyRent() {
+        return monthlyRent;
+    }
+
+    public void setMonthlyRent(int monthlyRent) {
+        this.monthlyRent = monthlyRent;
+    }
+
+    public int getApplicationFee() {
+        return applicationFee;
+    }
+
+    public void setApplicationFee(int applicationFee) {
+        this.applicationFee = applicationFee;
+    }
+
+    public int getSecurityDeposit() {
+        return securityDeposit;
+    }
+
+    public void setSecurityDeposit(int securityDeposit) {
+        this.securityDeposit = securityDeposit;
+    }
+
+    public String getUnitDescription() {
+        return unitDescription;
+    }
+
+    public void setUnitDescription(String unitDescription) {
+        this.unitDescription = unitDescription;
+    }
+
     /**
      * Create String representation of Unit Object
      * @return String
@@ -131,6 +267,17 @@ public class Unit {
                 ", unitIdentifier='" + unitIdentifier + '\'' +
                 ", tenantList=" + tenantList +
                 ", petList=" + petList +
+                ", isVacant=" + isVacant +
+                ", allowsPets=" + allowsPets +
+                ", numberOfBeds=" + numberOfBeds +
+                ", numberOfBaths=" + numberOfBaths +
+                ", squareFeet=" + squareFeet +
+                ", amenities=" + amenities +
+                ", appliances=" + appliances +
+                ", monthlyRent=" + monthlyRent +
+                ", applicationFee=" + applicationFee +
+                ", securityDeposit=" + securityDeposit +
+                ", unitDescription='" + unitDescription + '\'' +
                 '}';
     }
 }
