@@ -46,14 +46,15 @@ public class UnitController {
      * @param newUnit
      * @return
      */
+    @CrossOrigin
     @PostMapping("/unit/")
-    Unit addUnit(@RequestBody Unit newUnit){
+    Long addUnit(@RequestBody Unit newUnit){
        return UNIT_SERVICE.addNewUnit(newUnit);
     }
     /**
      * Sends Unit object with updated fields and sends it to Unit Service to make changes in Database
      * @param updatedUnit
-     * @return
+     * @return Long id - ID of newly created Unit
      */
     @CrossOrigin
     @PutMapping("/unit/{id}/")

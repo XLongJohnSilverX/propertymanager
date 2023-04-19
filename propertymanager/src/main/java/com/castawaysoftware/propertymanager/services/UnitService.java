@@ -44,12 +44,12 @@ public class UnitService {
      * @param unitToBeAdded new unit to be saved
      * @return Returns saved unit
      */
-    public Unit addNewUnit(Unit unitToBeAdded) {
+    public Long addNewUnit(Unit unitToBeAdded) {
         if (UNIT_REPOSITORY.existsByUnitIdentifier(unitToBeAdded.getUnitIdentifier())) {
             return null;
         } else {
-            UNIT_REPOSITORY.save(unitToBeAdded);
-            return unitToBeAdded;
+
+            return UNIT_REPOSITORY.save(unitToBeAdded).getId();
 
         }
     }
