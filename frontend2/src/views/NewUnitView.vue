@@ -44,7 +44,8 @@ export default{
             monthlyRent : '',
             applicationFee : '',
             securityDeposit : '',
-            unitDescription : ''
+            unitDescription : '',
+            property : {}
         }
     },
     methods:{
@@ -69,8 +70,26 @@ export default{
            
              fetch("http://localhost:8080/unit/", requestOptions)
              .then(response => response.json())
-             .then(data => this.$router.push({ name: 'unitSingle', params: { id: data } }))
-            .catch(err => console.log(err))
+            //  .then(data => this.$router.push({ name: 'unitSingle', params: { id: data } }))
+            .catch(err => console.log(err));
+
+
+            fetch("http://localhost:8080/property/" + this.$router.query.property + "/")
+                .then((res => res.json()))
+                .then(data => this.property = data)
+                .catch(err => console.log(err.message));
+            // this.property.unitList.add(this.unit);
+
+            const requestOptions1 = {
+                method: 'PUT',
+                headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                body: JSON.stringify(this.property)
+            };
+
+            fetch("http://localhost:8080/property/" + this.property.id + "/", requestOptions1)
+                .then(response => response.json())
+                .then(data => console.log("goo" + data)) // Manipulate the data retrieved back, if we want to do something with it
+                .catch(err => console.log(err))
             
         }
     }

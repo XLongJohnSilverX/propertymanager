@@ -60,6 +60,7 @@ const routes = [
   },
   {
     path: '/unit',
+    
     name: 'newUnit',
     component: NewUnitView
   }
