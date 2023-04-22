@@ -49,6 +49,7 @@ public class UnitController {
     @CrossOrigin
     @PostMapping("/unit/")
     Long addUnit(@RequestBody Unit newUnit){
+
        return UNIT_SERVICE.addNewUnit(newUnit);
     }
     /**

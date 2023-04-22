@@ -31,6 +31,12 @@
 <script>
 export default{
     name: 'NewUnitView',
+    mounted() {
+    this.propertyId = this.$route.query.property;
+    
+       console.log(this.$route.query.property);
+    
+},
     data(){
         return {
             responseUnit : Object,
@@ -45,11 +51,12 @@ export default{
             applicationFee : '',
             securityDeposit : '',
             unitDescription : '',
-            property : {}
+            property : Object,
+            propertyId : ''
         }
     },
     methods:{
-        saveUnit(){
+         async saveUnit(){
             
             this.unit = {id : '',
             unitIdentifier : this.unitIdentifier, 
@@ -61,7 +68,8 @@ export default{
                 monthlyRent: this.monthlyRent,
                 applicationFee: this.applicationFee,
                 securityDeposit: this.securityDeposit,
-                unitDescription: this.unitDescription}
+                unitDescription: this.unitDescription};
+                this.unitList = [];
             const requestOptions = {
                 method: 'POST',
                  headers: {'Accept': 'application/json', 'Content-Type': 'application/json' },
@@ -70,15 +78,23 @@ export default{
            
              fetch("http://localhost:8080/unit/", requestOptions)
              .then(response => response.json())
-            //  .then(data => this.$router.push({ name: 'unitSingle', params: { id: data } }))
+            .then(data => this.unit.id = data)
             .catch(err => console.log(err));
 
-
-            fetch("http://localhost:8080/property/" + this.$router.query.property + "/")
+            
+            await console.log(this.propertyId + 'id before call')
+                
+                await fetch("http://localhost:8080/property/" + this.propertyId + "/")
                 .then((res => res.json()))
                 .then(data => this.property = data)
                 .catch(err => console.log(err.message));
-            // this.property.unitList.add(this.unit);
+                console.log(JSON.stringify(this.property) + "fuck this")
+                
+                this.unitList = this.property.unitList;
+                // this.unitList.add()
+                this.property.unitList.push(this.unit);
+            
+            
 
             const requestOptions1 = {
                 method: 'PUT',
@@ -86,10 +102,12 @@ export default{
                 body: JSON.stringify(this.property)
             };
 
-            fetch("http://localhost:8080/property/" + this.property.id + "/", requestOptions1)
+           await fetch("http://localhost:8080/property/" + this.property.id + "/", requestOptions1)
                 .then(response => response.json())
                 .then(data => console.log("goo" + data)) // Manipulate the data retrieved back, if we want to do something with it
                 .catch(err => console.log(err))
+
+                this.$router.push({ name: 'propertySingle', params: { id: this.property.id } })
             
         }
     }

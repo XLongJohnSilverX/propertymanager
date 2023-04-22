@@ -91,13 +91,13 @@ export default {
         }
     }
     ,
-    mounted() {
-        fetch("http://localhost:8080/property/" + this.$route.params.id + "/")
+    async mounted() {
+        await fetch("http://localhost:8080/property/" + this.$route.params.id + "/")
             .then((res => res.json()))
             .then(data => this.property = data)
             .catch(err => console.log(err.message));
 
-
+        this.property.unitList.sort();
 
 
 
