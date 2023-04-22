@@ -1,12 +1,14 @@
 package com.castawaysoftware.propertymanager.data;
 
 import com.castawaysoftware.propertymanager.repositories.PropertyRepository;
+import com.castawaysoftware.propertymanager.repositories.WorkOrderRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +23,7 @@ public class LoadDummyData {
     private static final Logger log = LoggerFactory.getLogger(LoadDummyData.class);
 
     @Bean
-    CommandLineRunner initDatabase(PropertyRepository repository) {
+    CommandLineRunner initDatabase(PropertyRepository repository, WorkOrderRepository workOrderRepository) {
 
         return args -> {
             Address address = new Address("435 E 18th St", "Tucson", "AZ", "85743");
@@ -47,8 +49,11 @@ public class LoadDummyData {
             List<Unit> unitList = new ArrayList<>();
             unitList.add(unit1);
             unitList.add(unit2);
+            LocalDate date = LocalDate.now();
 
-            log.info("Preloading " + repository.save(new Property("Bel Air", address, unitList, 5000)));
+            WorkOrder workOrder = new WorkOrder("Change Filters", "Change HVAC Filters for each unit", SkillType.HVAC, LocalDate.now(),LocalDate.now(), 1L,1L  );
+
+            log.info("Preloading " + repository.save(new Property("Bel Air", address, unitList, 5000)) + workOrderRepository.save(workOrder));
 
         };
     }
