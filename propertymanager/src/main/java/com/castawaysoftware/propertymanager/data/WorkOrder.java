@@ -2,6 +2,7 @@ package com.castawaysoftware.propertymanager.data;
 
 
 import java.time.LocalDate;
+import java.util.List;
 
 import jakarta.persistence.*;
 
@@ -24,12 +25,20 @@ public class WorkOrder {
 
     private Long unitId;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<HoursLogged> hoursLoggedList;
+
+    private WorkOrderStatus workOrderStatus;
+
+    private boolean isAssigned;
+
+    
 
     public WorkOrder(){
 
     }
 
-    public WorkOrder(String title, String description, SkillType skillType, LocalDate dateCreated, LocalDate dateScheduled, Long propertyId, Long unitId) {
+    public WorkOrder(String title, String description, SkillType skillType, LocalDate dateCreated, LocalDate dateScheduled, Long propertyId, Long unitId, List<HoursLogged> hoursLoggedList, WorkOrderStatus workOrderStatus, boolean isAssigned) {
         this.title = title;
         this.description = description;
         this.skillType = skillType;
@@ -37,6 +46,9 @@ public class WorkOrder {
         this.dateScheduled = dateScheduled;
         this.propertyId = propertyId;
         this.unitId = unitId;
+        this.hoursLoggedList = hoursLoggedList;
+        this.workOrderStatus = workOrderStatus;
+        this.isAssigned = isAssigned;
     }
 
     public Long getId() {
@@ -103,17 +115,27 @@ public class WorkOrder {
         this.unitId = unitId;
     }
 
-    @Override
-    public String toString() {
-        return "WorkOrder{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", skillType=" + skillType +
-                ", dateCreated=" + dateCreated +
-                ", dateScheduled=" + dateScheduled +
-                ", propertyId=" + propertyId +
-                ", unitId=" + unitId +
-                '}';
+    public List<HoursLogged> getHoursLoggedList() {
+        return hoursLoggedList;
+    }
+
+    public void setHoursLoggedList(List<HoursLogged> hoursLoggedList) {
+        this.hoursLoggedList = hoursLoggedList;
+    }
+
+    public WorkOrderStatus getWorkOrderStatus() {
+        return workOrderStatus;
+    }
+
+    public void setWorkOrderStatus(WorkOrderStatus workOrderStatus) {
+        this.workOrderStatus = workOrderStatus;
+    }
+
+    public boolean isAssigned() {
+        return isAssigned;
+    }
+
+    public void setAssigned(boolean assigned) {
+        isAssigned = assigned;
     }
 }

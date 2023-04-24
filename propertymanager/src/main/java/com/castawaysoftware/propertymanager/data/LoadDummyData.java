@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,9 +50,12 @@ public class LoadDummyData {
             List<Unit> unitList = new ArrayList<>();
             unitList.add(unit1);
             unitList.add(unit2);
-            LocalDate date = LocalDate.now();
-
-            WorkOrder workOrder = new WorkOrder("Change Filters", "Change HVAC Filters for each unit", SkillType.HVAC, LocalDate.now(),LocalDate.now(), 1L,1L  );
+             LocalDateTime  date = LocalDateTime.now();
+             LocalDateTime date2 = LocalDateTime.now();
+            HoursLogged hoursLogged = new HoursLogged(date, date2, "Replaced Filters");
+            List<HoursLogged> hoursLoggedList = new ArrayList<>();
+            hoursLoggedList.add(hoursLogged);
+            WorkOrder workOrder = new WorkOrder("Change Filters", "Change HVAC Filters for each unit", SkillType.HVAC, LocalDate.now(),LocalDate.now(), 1L,1L, hoursLoggedList, WorkOrderStatus.SCHEDULED, false );
 
             log.info("Preloading " + repository.save(new Property("Bel Air", address, unitList, 5000)) + workOrderRepository.save(workOrder));
 
