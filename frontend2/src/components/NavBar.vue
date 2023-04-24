@@ -16,7 +16,9 @@
           <v-list-item prepend-icon="mdi-domain" title="Properties"
               value="myfiles" active-color="teal-accent-1"></v-list-item>
               </router-link>
+              <router-link style="text-decoration: none; color: inherit;" to="/workorder"> 
           <v-list-item prepend-icon="mdi-account-multiple" title="Work Orders" value="shared"></v-list-item>
+        </router-link>
           <v-list-item prepend-icon="mdi-star" title="Messages" value="starred"></v-list-item>
         </v-list>
       </v-navigation-drawer>

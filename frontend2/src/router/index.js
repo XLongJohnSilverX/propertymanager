@@ -7,6 +7,7 @@ import UnitView from '../views/UnitView.vue'
 import NewPropertyView from '../views/NewPropertyView.vue'
 import TenantView from '../views/TenantView.vue'
 import NewUnitView from '../views/NewUnitView.vue'
+import WorkOrderListView from '../views/WorkOrderListView.vue'
 const routes = [
   {
     path: '/',
@@ -63,6 +64,12 @@ const routes = [
     
     name: 'newUnit',
     component: NewUnitView
+  },
+  {
+    path: '/workorder',
+    
+    name: 'workOrder',
+    component: WorkOrderListView
   }
 ]
 
