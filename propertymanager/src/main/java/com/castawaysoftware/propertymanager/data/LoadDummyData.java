@@ -45,17 +45,21 @@ public class LoadDummyData {
             appliances.add("Dryer");
             appliances.add("Air Conditioning");
             String desc = "This is a beautifully remodeled ground floor 1-Bedroom/1-Bath unit located on 18th St in the Armory Park/Downtown area. ";
-            Unit unit1 = new Unit("Unit 10", tenantList,petList, true, true, 1, 1.5, 680,ammenities,appliances, 750, 35, 500, desc);
+
+            LocalDateTime  date = LocalDateTime.now();
+            LocalDateTime date2 = LocalDateTime.now();
+            HoursLogged hoursLogged = new HoursLogged(date, date2, "Replaced Filters");
+            List<HoursLogged> hoursLoggedList = new ArrayList<>();
+            hoursLoggedList.add(hoursLogged);
+            WorkOrder workOrder = new WorkOrder("Change Filters", "Change HVAC Filters for each unit", SkillType.HVAC, LocalDate.now(),LocalDate.now(), hoursLoggedList, WorkOrderStatus.SCHEDULED, false );
+            List<WorkOrder> workOrderList = new ArrayList<>();
+            workOrderList.add(workOrder);
+            Unit unit1 = new Unit("Unit 10", tenantList,petList, true, true, 1, 1.5, 680,ammenities,appliances, 750, 35, 500, desc,workOrderList );
             Unit unit2 = new Unit("Unit 11");
             List<Unit> unitList = new ArrayList<>();
             unitList.add(unit1);
             unitList.add(unit2);
-             LocalDateTime  date = LocalDateTime.now();
-             LocalDateTime date2 = LocalDateTime.now();
-            HoursLogged hoursLogged = new HoursLogged(date, date2, "Replaced Filters");
-            List<HoursLogged> hoursLoggedList = new ArrayList<>();
-            hoursLoggedList.add(hoursLogged);
-            WorkOrder workOrder = new WorkOrder("Change Filters", "Change HVAC Filters for each unit", SkillType.HVAC, LocalDate.now(),LocalDate.now(), 1L,1L, hoursLoggedList, WorkOrderStatus.SCHEDULED, false );
+
 
             log.info("Preloading " + repository.save(new Property("Bel Air", address, unitList, 5000)) + workOrderRepository.save(workOrder));
 

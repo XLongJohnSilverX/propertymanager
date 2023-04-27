@@ -2,6 +2,7 @@ package com.castawaysoftware.propertymanager.data;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -59,6 +60,11 @@ public class Unit {
 
     private String unitDescription;
 
+    @ElementCollection
+    @OneToMany(cascade = CascadeType.ALL)
+    @CollectionTable(name="listOfWorkOrders")
+    private List<WorkOrder> workOrderList;
+
     /**
      * Empty Constructor
      */
@@ -79,7 +85,7 @@ public class Unit {
      * @param petList
      */
 
-    public Unit(String unitIdentifier, List<Tenant> tenantList, List<Pet> petList, boolean isVacant, boolean allowsPets, int numberOfBeds, double numberOfBaths, int squareFeet, List<String> amenities, List<String> appliances, int monthlyRent, int applicationFee, int securityDeposit, String unitDescription) {
+    public Unit(String unitIdentifier, List<Tenant> tenantList, List<Pet> petList, boolean isVacant, boolean allowsPets, int numberOfBeds, double numberOfBaths, int squareFeet, List<String> amenities, List<String> appliances, int monthlyRent, int applicationFee, int securityDeposit, String unitDescription, List<WorkOrder> workOrderList) {
         this.unitIdentifier = unitIdentifier;
         this.tenantList = tenantList;
         this.petList = petList;
@@ -94,6 +100,7 @@ public class Unit {
         this.applicationFee = applicationFee;
         this.securityDeposit = securityDeposit;
         this.unitDescription = unitDescription;
+        this.workOrderList = workOrderList;
     }
 
     /**
@@ -254,6 +261,14 @@ public class Unit {
 
     public void setUnitDescription(String unitDescription) {
         this.unitDescription = unitDescription;
+    }
+
+    public List<WorkOrder> getWorkOrderList() {
+        return workOrderList;
+    }
+
+    public void setWorkOrderList(List<WorkOrder> workOrderList) {
+        this.workOrderList = workOrderList;
     }
 
     /**
