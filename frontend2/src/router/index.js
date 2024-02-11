@@ -8,6 +8,7 @@ import NewPropertyView from '../views/NewPropertyView.vue'
 import TenantView from '../views/TenantView.vue'
 import NewUnitView from '../views/NewUnitView.vue'
 import WorkOrderListView from '../views/WorkOrderListView.vue'
+import WorkOrderView from '../views/WorkOrderView'
 const routes = [
   {
     path: '/',
@@ -70,6 +71,11 @@ const routes = [
     
     name: 'workOrder',
     component: WorkOrderListView
+  },
+  {
+    path : '/workorder/:id',
+    name : 'WorkOrderView',
+    component: WorkOrderView
   }
 ]
 

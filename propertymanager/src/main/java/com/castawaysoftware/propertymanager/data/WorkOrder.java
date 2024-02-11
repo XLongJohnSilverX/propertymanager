@@ -22,7 +22,11 @@ public class WorkOrder {
     private LocalDate dateScheduled;
 
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private Unit unit;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private Property property;
 
 
     @OneToMany(cascade = CascadeType.ALL)

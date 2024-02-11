@@ -60,8 +60,15 @@ public class LoadDummyData {
             unitList.add(unit1);
             unitList.add(unit2);
 
+            List<Storage> storageList = new ArrayList<>();
+            List<Item> itemList = new ArrayList<>();
+            List<ItemType> itemTypeList = new ArrayList<>();
+            itemTypeList.add(new ItemType("Electric"));
+            Item lightbulb = new Item("Light Bulb", itemTypeList);
+            Storage shop = new Storage("Shop", itemList);
+            storageList.add(shop);
 
-            log.info("Preloading " + repository.save(new Property("Bel Air", address, unitList, 5000)) + workOrderRepository.save(workOrder));
+            log.info("Preloading " + repository.save(new Property("Bel Air", address, unitList,storageList,  5000)) + workOrderRepository.save(workOrder));
 
         };
     }
