@@ -2,7 +2,7 @@ import React from 'react';
 import NavbarComponent from '../components/NavbarComponent';
 import { useState, useEffect } from 'react';
 import PropertyCard from '../components/PropertyCard';
-function Property(){
+function PropertyList(){
 
     const [propertyList, setPropertyList] = useState([]);
 
@@ -25,4 +25,4 @@ function Property(){
         </>
     )
 }
-export default Property;
+export default PropertyList;

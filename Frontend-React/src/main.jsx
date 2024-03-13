@@ -4,8 +4,8 @@ import App from './App.jsx'
 import './index.css'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Property from './Pages/Property.jsx';
-
+import PropertyList from './Pages/PropertyList.jsx';
+import PropertyView from './Pages/PropertyView.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -13,7 +13,11 @@ const router = createBrowserRouter([
   },
   {
     path: "property",
-    element: <Property />,
+    element: <PropertyList />,
+  },
+  {
+    path: "property/:id",
+    element: <PropertyView />,
   },
 ]);
 

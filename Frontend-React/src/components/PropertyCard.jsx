@@ -1,5 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { useNavigate } from "react-router-dom";
 /**
  * Generates a property card component with the given data.
  *
@@ -8,6 +9,14 @@ import Card from 'react-bootstrap/Card';
  */
 // TODO: Add pictures to card
 function PropertyCard({data}) {
+  
+  const navigate = useNavigate();
+
+  function navigateToProperty() {
+    navigate("/property/" + data.id);
+  }
+
+  
   return (
     <Card style={{ width: '18rem' }}>
       {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
@@ -16,7 +25,7 @@ function PropertyCard({data}) {
         <Card.Text>
          <span>{data.address.streetAddress},{data.address.city}</span>     
         </Card.Text>
-        <Button variant="primary">View Property</Button>
+        <Button variant="primary" onClick={navigateToProperty}>View Property</Button>
       </Card.Body>
     </Card>
   );
