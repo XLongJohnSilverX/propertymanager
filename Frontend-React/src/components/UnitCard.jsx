@@ -1,5 +1,14 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+/**
+ * Renders a card component displaying information about a specific unit.
+ *This code defines a React component called UnitCard, which takes a unit object as a parameter. 
+ It renders a card component displaying information about the unit, 
+ including the unit identifier and a list of tenants. 
+ It also includes a button for viewing more details.
+ * @param {object} unit - The unit object containing unit details and a list of tenants
+ * @return {JSX.Element} A Card component displaying unit and tenant information
+ */
 function UnitCard({unit}) {
     return (
         <Card style={{ width: '18rem' }}>

@@ -4,6 +4,11 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 
+/**
+ * Renders a navigation bar component with links and dropdown menus.
+ *
+ * @return {JSX.Element} The rendered navigation bar component
+ */
 function NavbarComponent() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">

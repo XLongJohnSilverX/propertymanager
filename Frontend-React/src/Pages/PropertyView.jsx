@@ -9,6 +9,13 @@ import {
   } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import UnitCard from "../components/UnitCard";
+/**
+ * Fetches property data based on the given ID and renders the property view with name,
+ * address, and unit list.
+ *
+ * @param {void} 
+ * @return {JSX} The property view component
+ */
 function PropertyView(){
     const { id } = useParams();
     const [property, setProperty] = useState({
