@@ -27,7 +27,7 @@ public class PropertyService {
     }
 
     /**
-     * when called, it will tell the Property Repository to grab all properties and send them back to the controller
+     * When called, it will tell the Property Repository to grab all properties and send them back to the controller
      * @return
      */
     public List<Property> getAllProperties(){

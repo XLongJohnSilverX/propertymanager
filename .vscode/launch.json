@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-PropertymanagerApplication<propertymanager>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.castawaysoftware.propertymanager.PropertymanagerApplication",
+            "projectName": "propertymanager",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

@@ -43,7 +43,7 @@ PropertyManager
 
     Technology Stack
 
-    The app will be built using modern web technologies, such as HTML, CSS, JavaScript, and Spring Boot.
+    The app will be built using modern web technologies, such as HTML, CSS, React, and Spring Boot.
     
 
     Conclusion
