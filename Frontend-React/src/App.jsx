@@ -13,6 +13,7 @@ function App() {
   return (
     <>
     <NavbarComponent/>
+    <h1>Hello, React!</h1>
     </>
   )
 }

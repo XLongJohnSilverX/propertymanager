@@ -40,6 +40,7 @@ public class PropertyController {
      * @return <code>List<Property></code>
      */
 
+    
     @CrossOrigin
     @GetMapping("/property/")
    public List<Property> getAllProperties() {
