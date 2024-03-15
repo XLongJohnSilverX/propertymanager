@@ -5,7 +5,8 @@ import jakarta.persistence.*;
 /**
  * The `Appliance` class represents an appliance with details such as make, model, serial number, and other information.
  */
-public class Appliance {
+@Entity
+ public class Appliance {
 
    /**
      * Id of Appliance that is generated

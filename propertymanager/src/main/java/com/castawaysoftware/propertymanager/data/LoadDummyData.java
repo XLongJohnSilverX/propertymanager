@@ -40,10 +40,17 @@ public class LoadDummyData {
             ammenities.add("Dog Park");
             ammenities.add("Laundry Room");
             ammenities.add("Pool");
-            List<String> appliances = new ArrayList<>();
-            appliances.add("Washer");
-            appliances.add("Dryer");
-            appliances.add("Air Conditioning");
+            List<Appliance> appliances = new ArrayList<>();
+            Appliance fooApplicance = new Appliance(
+                "Whirlpool", 
+                "wg283djj129",
+                "123456", 
+                ApplianceType.OVEN, 
+                AppliancePowerType.GAS, 
+                "Burners where replaced 6 months ago");
+            appliances.add(fooApplicance);
+
+
             String desc = "This is a beautifully remodeled ground floor 1-Bedroom/1-Bath unit located on 18th St in the Armory Park/Downtown area. ";
 
             LocalDateTime  date = LocalDateTime.now();

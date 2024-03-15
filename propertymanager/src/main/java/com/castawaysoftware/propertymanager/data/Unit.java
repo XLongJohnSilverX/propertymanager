@@ -49,8 +49,8 @@ public class Unit {
 
 
     private List<String> amenities;
-
-    private List<String> appliances;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Appliance> appliances;
 
     private int monthlyRent;
 
@@ -85,7 +85,7 @@ public class Unit {
      * @param petList
      */
 
-    public Unit(String unitIdentifier, List<Tenant> tenantList, List<Pet> petList, boolean isVacant, boolean allowsPets, int numberOfBeds, double numberOfBaths, int squareFeet, List<String> amenities, List<String> appliances, int monthlyRent, int applicationFee, int securityDeposit, String unitDescription, List<WorkOrder> workOrderList) {
+    public Unit(String unitIdentifier, List<Tenant> tenantList, List<Pet> petList, boolean isVacant, boolean allowsPets, int numberOfBeds, double numberOfBaths, int squareFeet, List<String> amenities, List<Appliance> appliances, int monthlyRent, int applicationFee, int securityDeposit, String unitDescription, List<WorkOrder> workOrderList) {
         this.unitIdentifier = unitIdentifier;
         this.tenantList = tenantList;
         this.petList = petList;
@@ -223,11 +223,11 @@ public class Unit {
         this.amenities = amenities;
     }
 
-    public List<String> getAppliances() {
+    public List<Appliance> getAppliances() {
         return appliances;
     }
 
-    public void setAppliances(List<String> appliances) {
+    public void setAppliances(List<Appliance> appliances) {
         this.appliances = appliances;
     }
 
