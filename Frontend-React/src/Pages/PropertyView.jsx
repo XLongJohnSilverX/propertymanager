@@ -48,6 +48,9 @@ function PropertyView(){
         <h2>
           {property.address.streetAddress}, {property.address.city}, {property.address.state}     {property.address.zipCode}     
         </h2>
+        <h3>
+        Maintenance Limit $ {property.maintenanceLimit}
+        </h3>
         {property.unitList.map((unit) => {
           return <UnitCard key={unit.id} unit={unit} />;
         })}

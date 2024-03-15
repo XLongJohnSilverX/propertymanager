@@ -35,7 +35,6 @@ public class UnitController {
      * @return Unit Object requested
      */
     @CrossOrigin
-
     @GetMapping("/unit/{id}/")
      Unit getUnitById(@PathVariable Long id){
         return UNIT_SERVICE.getUnitById(id);

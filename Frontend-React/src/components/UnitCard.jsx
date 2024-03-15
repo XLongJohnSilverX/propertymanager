@@ -1,5 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { useNavigate } from "react-router-dom"; 
 /**
  * Renders a card component displaying information about a specific unit.
  *This code defines a React component called UnitCard, which takes a unit object as a parameter. 
@@ -10,7 +11,11 @@ import Card from 'react-bootstrap/Card';
  * @return {JSX.Element} A Card component displaying unit and tenant information
  */
 function UnitCard({unit}) {
-    return (
+  const navigate = useNavigate();
+  function navigateToUnit(){
+    navigate("/unit/" + unit.id);
+  }  
+  return (
         <Card style={{ width: '18rem' }}>
         {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
         <Card.Body>
@@ -21,7 +26,7 @@ function UnitCard({unit}) {
         })}
               
           </Card.Text>
-          <Button variant="primary">View</Button>
+          <Button variant="primary" onClick={navigateToUnit}>View</Button>
         </Card.Body>
       </Card>
     )

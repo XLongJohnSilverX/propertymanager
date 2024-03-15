@@ -42,6 +42,7 @@ public class Property {
      */
     private int maintenanceLimit;
 
+    
 
     /**
      * Empty Property Constructor

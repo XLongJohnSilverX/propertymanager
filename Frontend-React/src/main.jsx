@@ -6,6 +6,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import PropertyList from './Pages/PropertyList.jsx';
 import PropertyView from './Pages/PropertyView.jsx';
+import UnitView from './Pages/UnitView.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
     path: "property/:id",
     element: <PropertyView />,
   },
+ {
+  path: "unit/:id",
+  element: <UnitView />
+ } 
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
