@@ -9,7 +9,7 @@
 function TenantItem({tenant}) {
     return (
         <div>
-            <p>{tenant.firstName} {tenant.lastName}</p>
+            <p>{tenant.firstName} {tenant.lastName} {tenant.email} {tenant.phoneNumber}</p>
         </div>
     )
 }

@@ -7,6 +7,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import PropertyList from './Pages/PropertyList.jsx';
 import PropertyView from './Pages/PropertyView.jsx';
 import UnitView from './Pages/UnitView.jsx';
+import TenantItem from './components/TenantItem.jsx';
+import TenantView from './Pages/TenantView.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -23,7 +25,11 @@ const router = createBrowserRouter([
  {
   path: "unit/:id",
   element: <UnitView />
- } 
+ },
+ {
+  path: "tenant/:id",
+  element: <TenantView />
+ }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
