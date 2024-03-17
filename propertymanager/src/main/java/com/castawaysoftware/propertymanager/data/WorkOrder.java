@@ -22,8 +22,8 @@ public class WorkOrder {
     private LocalDate dateScheduled;
 
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Unit unit;
+    
+    private Long workOrderUnitId;
 
     @OneToOne(cascade = CascadeType.ALL)
     private Property property;
@@ -42,7 +42,7 @@ public class WorkOrder {
 
     }
 
-    public WorkOrder(String title, String description, SkillType skillType, LocalDate dateCreated, LocalDate dateScheduled,  List<HoursLogged> hoursLoggedList, WorkOrderStatus workOrderStatus, boolean isAssigned) {
+    public WorkOrder(String title, String description, SkillType skillType, LocalDate dateCreated, LocalDate dateScheduled,  List<HoursLogged> hoursLoggedList, WorkOrderStatus workOrderStatus, boolean isAssigned, Long workOrderUnitId) {
         this.title = title;
         this.description = description;
         this.skillType = skillType;
@@ -53,6 +53,7 @@ public class WorkOrder {
         this.hoursLoggedList = hoursLoggedList;
         this.workOrderStatus = workOrderStatus;
         this.isAssigned = isAssigned;
+        this.workOrderUnitId = workOrderUnitId;
     }
 
     public Long getId() {
@@ -128,5 +129,12 @@ public class WorkOrder {
 
     public void setAssigned(boolean assigned) {
         isAssigned = assigned;
+    }
+
+    public Long getWorkOrderUnitId() {
+        return workOrderUnitId;
+    }
+    public void setWorkOrderUnitId(Long workOrderUnitId) {
+        this.workOrderUnitId = workOrderUnitId;
     }
 }
