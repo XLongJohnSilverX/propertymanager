@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import PropertyList from './Pages/PropertyList.jsx';
 import PropertyView from './Pages/PropertyView.jsx';
 import UnitView from './Pages/UnitView.jsx';
+import WorkOrderList from './Pages/WorkOrderList.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -23,7 +24,11 @@ const router = createBrowserRouter([
  {
   path: "unit/:id",
   element: <UnitView />
- } 
+ },
+ {
+  path: "workorder",
+  element: <WorkOrderList />
+ }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
