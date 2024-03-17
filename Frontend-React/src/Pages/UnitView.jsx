@@ -9,6 +9,7 @@ import {
   } from "react-router-dom";
   import Accordion from 'react-bootstrap/Accordion';
 import TenantItem from "../components/TenantItem";
+import WorkOrderItem from "../components/WorkOrderItem";
 function UnitView(){
 
     const { id } = useParams();
@@ -16,8 +17,9 @@ function UnitView(){
         id : "",
         unitIdentifier: "",
         tenantList: [],
-        petList: []
-    })
+        petList: [],
+        workOrderList: []
+    });
     useEffect(() => {
         fetch("http://localhost:8080/unit/" + id + '/', { mode: "cors" })
         .then((response) => response.json())
@@ -55,6 +57,14 @@ function UnitView(){
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item eventKey="2">
+        <Accordion.Header>Work Orders</Accordion.Header>
+        <Accordion.Body>
+        {unit.workOrderList.map((workOrder) => {
+          return <WorkOrderItem key={workOrder.id} workOrder={workOrder} />;
+        })}
+        </Accordion.Body>
+      </Accordion.Item>
+      <Accordion.Item eventKey="3">
         <Accordion.Header>Pets</Accordion.Header>
         <Accordion.Body>
          PETS
