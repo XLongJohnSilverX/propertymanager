@@ -31,4 +31,15 @@ public class WorkOrderController {
     public WorkOrder getWorkOrderById(@PathVariable Long id){
         return WORKORDERSERVICE.getWorkOrderById(id);
     }
+
+    @CrossOrigin
+    @GetMapping("/workorder/byproperty/{id}/")
+    public List<WorkOrder> getWorkOrdersByPropertyId(@PathVariable Long id){
+        return WORKORDERSERVICE.getWorkOrdersByPropertyId(id);
+    }
+    @CrossOrigin
+    @GetMapping("/workorder/byunit/{id}/")
+    public List<WorkOrder> getWorkOrdersByUnitId(@PathVariable Long id){
+        return WORKORDERSERVICE.getWorkOrdersByUnitId(id);
+    }
 }

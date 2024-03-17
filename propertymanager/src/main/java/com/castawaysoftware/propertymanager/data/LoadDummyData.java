@@ -58,7 +58,7 @@ public class LoadDummyData {
             HoursLogged hoursLogged = new HoursLogged(date, date2, "Replaced Filters");
             List<HoursLogged> hoursLoggedList = new ArrayList<>();
             hoursLoggedList.add(hoursLogged);
-            WorkOrder workOrder = new WorkOrder("Change Filters", "Change HVAC Filters for each unit", SkillType.HVAC, LocalDate.now(),LocalDate.now(), hoursLoggedList, WorkOrderStatus.SCHEDULED, false, 1L );
+            WorkOrder workOrder = new WorkOrder("Change Filters", "Change HVAC Filters for each unit", SkillType.HVAC, LocalDate.now(),LocalDate.now(), hoursLoggedList, WorkOrderStatus.SCHEDULED, false, 1L, 1L );
             List<WorkOrder> workOrderList = new ArrayList<>();
             workOrderList.add(workOrder);
             Unit unit1 = new Unit("Unit 10", tenantList,petList, true, true, 1, 1.5, 680,ammenities,appliances, 750, 35, 500, desc,workOrderList );

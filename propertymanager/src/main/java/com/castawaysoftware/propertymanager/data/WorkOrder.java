@@ -23,10 +23,10 @@ public class WorkOrder {
 
 
     
-    private Long workOrderUnitId;
+    private Long unitId;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Property property;
+ 
+    private Long propertyId;
 
 
     @OneToMany(cascade = CascadeType.ALL)
@@ -42,7 +42,7 @@ public class WorkOrder {
 
     }
 
-    public WorkOrder(String title, String description, SkillType skillType, LocalDate dateCreated, LocalDate dateScheduled,  List<HoursLogged> hoursLoggedList, WorkOrderStatus workOrderStatus, boolean isAssigned, Long workOrderUnitId) {
+    public WorkOrder(String title, String description, SkillType skillType, LocalDate dateCreated, LocalDate dateScheduled,  List<HoursLogged> hoursLoggedList, WorkOrderStatus workOrderStatus, boolean isAssigned, Long unitId, Long propertyId) {
         this.title = title;
         this.description = description;
         this.skillType = skillType;
@@ -53,7 +53,8 @@ public class WorkOrder {
         this.hoursLoggedList = hoursLoggedList;
         this.workOrderStatus = workOrderStatus;
         this.isAssigned = isAssigned;
-        this.workOrderUnitId = workOrderUnitId;
+        this.unitId = unitId;
+        this.propertyId = propertyId;
     }
 
     public Long getId() {
@@ -131,10 +132,16 @@ public class WorkOrder {
         isAssigned = assigned;
     }
 
-    public Long getWorkOrderUnitId() {
-        return workOrderUnitId;
+    public Long getUnitId() {
+        return unitId;
     }
-    public void setWorkOrderUnitId(Long workOrderUnitId) {
-        this.workOrderUnitId = workOrderUnitId;
+    public void setUnitId(Long unitId) {
+        this.unitId = unitId;
+    }
+    public Long getPropertyId() {
+        return propertyId;
+    }
+    public void setPropertyId(Long propertyId) {
+        this.propertyId = propertyId;
     }
 }

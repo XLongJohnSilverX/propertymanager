@@ -15,19 +15,26 @@ public class WorkOrderService {
         this.WORKORDERREPOSITORY = WORKORDERREPOSITORY;
     }
 
-    public List<WorkOrder> getAllWorkOrders(){
+    public List<WorkOrder> getAllWorkOrders() {
         return WORKORDERREPOSITORY.findAll();
     }
 
-    public WorkOrder getWorkOrderById(Long id){
+    public WorkOrder getWorkOrderById(Long id) {
         return WORKORDERREPOSITORY.findById(id).get();
     }
 
-    public WorkOrder newWorkOrder(WorkOrder workOrder){
+    public WorkOrder newWorkOrder(WorkOrder workOrder) {
         return WORKORDERREPOSITORY.save(workOrder);
     }
 
-    public WorkOrder updateWorkOrder(WorkOrder workOrder){
+    public WorkOrder updateWorkOrder(WorkOrder workOrder) {
         return WORKORDERREPOSITORY.save(workOrder);
+    }
+
+    public List<WorkOrder> getWorkOrdersByPropertyId(Long id) {
+        return WORKORDERREPOSITORY.getWorkOrdersByPropertyId(id);
+    }
+    public List<WorkOrder> getWorkOrdersByUnitId(Long id) {
+        return WORKORDERREPOSITORY.getWorkOrdersByUnitId(id);
     }
 }
