@@ -61,7 +61,7 @@ public class Unit {
     private String unitDescription;
 
     @ElementCollection
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="unit")
+    @OneToMany(cascade = CascadeType.ALL)
     @CollectionTable(name="listOfWorkOrders")
     private List<WorkOrder> workOrderList;
 

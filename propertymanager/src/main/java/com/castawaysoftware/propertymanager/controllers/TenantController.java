@@ -24,7 +24,6 @@ public class TenantController {
      * <b>GetMapping: All Properties</b>
      * @return<code>List<Tenant></code>
      */
-    @CrossOrigin
     @GetMapping("/tenant/")
     public List<Tenant> getAllTenants(){
     return TENANT_SERVICE.getAllTenants();
