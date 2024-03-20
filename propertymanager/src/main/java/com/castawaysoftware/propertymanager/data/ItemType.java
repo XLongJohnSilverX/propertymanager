@@ -16,10 +16,6 @@ public class ItemType {
         this.typeName = typeName;
     }
 
-    
-    /** 
-     * @return Long
-     */
     public Long getId() {
         return id;
     }

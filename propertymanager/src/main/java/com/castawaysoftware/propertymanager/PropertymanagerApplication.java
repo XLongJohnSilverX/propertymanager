@@ -6,10 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class PropertymanagerApplication {
 
-	
-	/** 
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		SpringApplication.run(PropertymanagerApplication.class, args);
 	}

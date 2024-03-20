@@ -40,12 +40,6 @@ public class TenantController {
        return TENANT_SERVICE.getTenantById(id);
     }
 
-    
-    /** 
-     * @param id
-     * @param updatedTenant
-     * @return Tenant
-     */
     @CrossOrigin
     @PutMapping("/tenant/{id}/")
     public Tenant updateTenant(@PathVariable Long id, @RequestBody Tenant updatedTenant){

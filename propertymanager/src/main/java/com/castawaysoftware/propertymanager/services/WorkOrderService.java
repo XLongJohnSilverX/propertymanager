@@ -15,10 +15,6 @@ public class WorkOrderService {
         this.WORKORDERREPOSITORY = WORKORDERREPOSITORY;
     }
 
-    
-    /** 
-     * @return List<WorkOrder>
-     */
     public List<WorkOrder> getAllWorkOrders() {
         return WORKORDERREPOSITORY.findAll();
     }
