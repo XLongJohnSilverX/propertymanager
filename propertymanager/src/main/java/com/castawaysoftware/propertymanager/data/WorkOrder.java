@@ -57,6 +57,10 @@ public class WorkOrder {
         this.propertyId = propertyId;
     }
 
+    
+    /** 
+     * @return Long
+     */
     public Long getId() {
         return id;
     }

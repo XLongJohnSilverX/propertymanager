@@ -50,6 +50,10 @@ public class Property {
     public Property() {
     }
 
+    
+    /** 
+     * @return List<Storage>
+     */
     public List<Storage> getStorageList() {
         return storageList;
     }

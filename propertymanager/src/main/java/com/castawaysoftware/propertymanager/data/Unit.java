@@ -175,6 +175,10 @@ public class Unit {
         this.petList = petList;
     }
 
+    
+    /** 
+     * @return boolean
+     */
     public boolean isVacant() {
         return isVacant;
     }

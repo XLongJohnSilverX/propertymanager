@@ -23,6 +23,12 @@ public class LoadDummyData {
 
     private static final Logger log = LoggerFactory.getLogger(LoadDummyData.class);
 
+    
+    /** 
+     * @param repository
+     * @param workOrderRepository
+     * @return CommandLineRunner
+     */
     @Bean
     CommandLineRunner initDatabase(PropertyRepository repository, WorkOrderRepository workOrderRepository) {
 

@@ -15,6 +15,10 @@ public class Item {
     @OneToMany(cascade = CascadeType.ALL)
     private List<ItemType> itemTypeList;
 
+    
+    /** 
+     * @return Long
+     */
     public Long getId() {
         return id;
     }

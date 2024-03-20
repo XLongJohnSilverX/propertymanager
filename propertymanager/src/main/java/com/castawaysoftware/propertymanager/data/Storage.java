@@ -21,6 +21,10 @@ public class Storage {
         this.itemList = itemList;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getName() {
         return name;
     }

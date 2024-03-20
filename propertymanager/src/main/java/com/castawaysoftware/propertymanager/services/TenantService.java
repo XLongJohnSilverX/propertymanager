@@ -15,6 +15,10 @@ public class TenantService {
         TENANT_REPOSITORY = tenantRepository;
     }
 
+    
+    /** 
+     * @return List<Tenant>
+     */
     public List<Tenant> getAllTenants(){
         return TENANT_REPOSITORY.findAll();
     }

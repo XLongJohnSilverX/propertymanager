@@ -26,6 +26,10 @@ public class HoursLogged {
         this.description = description;
     }
 
+    
+    /** 
+     * @return LocalDateTime
+     */
     public LocalDateTime getStartTime() {
         return startTime;
     }
