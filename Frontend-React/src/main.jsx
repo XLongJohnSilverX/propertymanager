@@ -8,6 +8,7 @@ import PropertyList from './Pages/PropertyList.jsx';
 import PropertyView from './Pages/PropertyView.jsx';
 import UnitView from './Pages/UnitView.jsx';
 import WorkOrderList from './Pages/WorkOrderList.jsx';
+import EditUnitPage from './Pages/EditUnitPage.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -28,7 +29,11 @@ const router = createBrowserRouter([
  {
   path: "workorder",
   element: <WorkOrderList />
- }
+ },
+{
+  path: "unit/:id/edit",
+  element: <EditUnitPage/>
+}
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
