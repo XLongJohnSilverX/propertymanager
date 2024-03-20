@@ -1,7 +1,14 @@
 import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
 import { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom"; 
+
 function WorkOrderItem({workOrder}){
+    const navigate = useNavigate();
+    function navigateToWorkOrder(){
+      navigate("/workorder/" + workOrder.id);
+    } 
+  
     const [unit, setUnit] = useState({
         id : "",
         unitIdentifier: "",
@@ -21,7 +28,7 @@ function WorkOrderItem({workOrder}){
         <Accordion.Body>
             
          {workOrder.description}
-         <Button variant="info">Go to Work Order</Button>{' '}
+         <Button variant="info" onClick={navigateToWorkOrder}>Go to Work Order</Button>{' '}
         </Accordion.Body>
       </Accordion.Item>
         </>

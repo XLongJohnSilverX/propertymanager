@@ -47,7 +47,7 @@ function UnitView() {
       </div>
 
       <div>
-        <Accordion defaultActiveKey={[""]} alwaysOpen>
+        <Accordion defaultActiveKey={[""]} >
           <Accordion.Item eventKey="0">
             <Accordion.Header>Unit Information</Accordion.Header>
             <Accordion.Body>
@@ -72,13 +72,13 @@ function UnitView() {
               </ListGroup>
             </Accordion.Body>
           </Accordion.Item>
-          <Accordion.Item eventKey="4" alwaysOpen>
+          <Accordion.Item eventKey="4" >
             <Accordion.Header>Rent Payment and Information</Accordion.Header>
             <Accordion.Body>
               <h1>TODO: Add RENT INFO HERE</h1>
             </Accordion.Body>
           </Accordion.Item>
-          <Accordion.Item eventKey="2" alwaysOpen>
+          <Accordion.Item eventKey="2" >
             <Accordion.Header>Work Orders</Accordion.Header>
             <Accordion.Body>
               {unit.workOrderList.map((workOrder) => {
@@ -88,7 +88,7 @@ function UnitView() {
               })}
             </Accordion.Body>
           </Accordion.Item>
-          <Accordion.Item eventKey="1" alwaysOpen>
+          <Accordion.Item eventKey="1" >
             <Accordion.Header>Tenants</Accordion.Header>
             <Accordion.Body>
               {unit.tenantList.map((tenant) => {
@@ -97,7 +97,7 @@ function UnitView() {
             </Accordion.Body>
           </Accordion.Item>
 
-          <Accordion.Item eventKey="3" alwaysOpen>
+          <Accordion.Item eventKey="3" >
             <Accordion.Header>Pets</Accordion.Header>
             <Accordion.Body>
               {unit.petList.map((pet) => {
