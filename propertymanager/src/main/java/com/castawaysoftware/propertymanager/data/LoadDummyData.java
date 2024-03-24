@@ -1,6 +1,7 @@
 package com.castawaysoftware.propertymanager.data;
 
 import com.castawaysoftware.propertymanager.repositories.PropertyRepository;
+import com.castawaysoftware.propertymanager.repositories.RentRepository;
 import com.castawaysoftware.propertymanager.repositories.WorkOrderRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +25,7 @@ public class LoadDummyData {
     private static final Logger log = LoggerFactory.getLogger(LoadDummyData.class);
 
     @Bean
-    CommandLineRunner initDatabase(PropertyRepository repository, WorkOrderRepository workOrderRepository) {
+    CommandLineRunner initDatabase(PropertyRepository repository, WorkOrderRepository workOrderRepository, RentRepository rentRepository) {
 
         return args -> {
             Address address = new Address("435 E 18th St", "Tucson", "AZ", "85743");
@@ -75,6 +76,9 @@ public class LoadDummyData {
             Storage shop = new Storage("Shop", itemList);
             storageList.add(shop);
 
+            Rent foo = new Rent( 1L, LocalDate.now(), LocalDate.now(), true, false, 500);
+    
+            rentRepository.save(foo);
             log.info("Preloading " + repository.save(new Property("Bel Air", address, unitList,storageList,  5000)) + workOrderRepository.save(workOrder));
 
         };
