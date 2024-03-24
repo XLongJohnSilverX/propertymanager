@@ -31,5 +31,8 @@ public class RentService {
     public Rent updateRent(Rent updatedRent) {
        return RENT_REPOSITORY.save(updatedRent);
     }
+    public List<Rent> getRentsByUnitId(Long id) {
+        return RENT_REPOSITORY.getRentsByUnitId(id);
+    }
 
 }

@@ -35,6 +35,12 @@ public class RentController {
         return RENT_SERVICE.getRentById(id);
     }
     @CrossOrigin
+    @GetMapping("/rent/byunit/{id}/")
+     List<Rent> getRentsByUnitId(@PathVariable Long id) {
+        return RENT_SERVICE.getRentsByUnitId(id);
+     }
+
+    @CrossOrigin
     @PostMapping("/rent/")
      Long addNewRent(Rent newRent) {
         return RENT_SERVICE.addNewRent(newRent);

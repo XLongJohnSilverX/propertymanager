@@ -14,8 +14,10 @@ import Button from "react-bootstrap/esm/Button";
 import PetItem from "../components/PetItem";
 import ListGroup from "react-bootstrap/ListGroup";
 import ApplianceItem from "../components/ApplianceItem";
+import RentItem from "../components/RentItem";
 function UnitView() {
   const { id } = useParams();
+  const [rentList, setRentList] = useState([{}]);
   const [unit, setUnit] = useState({
     id: "",
     unitIdentifier: "",
@@ -31,12 +33,18 @@ function UnitView() {
     vacant: "",
   });
   useEffect(() => {
+    console.log("Calling server");
     fetch("http://localhost:8080/unit/" + id + "/", { mode: "cors" })
       .then((response) => response.json())
       .then((data) => setUnit(data))
 
       .catch((error) => console.error(error));
-  });
+
+    fetch("http://localhost:8080/rent/byunit/" + id + "/", { mode: "cors" })
+    .then((response) => response.json())
+    .then((data) => setRentList(data))
+    .catch((error) => console.error(error));
+  }, []);
 
   return (
     <>
@@ -75,7 +83,10 @@ function UnitView() {
           <Accordion.Item eventKey="4" >
             <Accordion.Header>Rent Payment and Information</Accordion.Header>
             <Accordion.Body>
-              <h1>TODO: Add RENT INFO HERE</h1>
+              
+              {rentList.map((rent) => {
+                return <RentItem key={rent.id} rent={rent} />;
+              })}
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="2" >
