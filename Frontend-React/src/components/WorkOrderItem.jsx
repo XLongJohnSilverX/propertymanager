@@ -1,7 +1,8 @@
-import Accordion from 'react-bootstrap/Accordion';
+
 import Button from 'react-bootstrap/Button';
 import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom"; 
+import Card from "react-bootstrap/Card";
 
 function WorkOrderItem({workOrder}){
     const navigate = useNavigate();
@@ -17,20 +18,22 @@ function WorkOrderItem({workOrder}){
         workOrderList: []
     })
     useEffect(() => {
-        fetch("http://localhost:8080/unit/" + workOrder.unitId + '/', { mode: "cors" })
-        .then((response) => response.json())
-        .then((data) => setUnit(data))
+        
     })
     return (
         <>
-        <Accordion.Item >
-        <Accordion.Header>{unit.unitIdentifier} | {workOrder.title} | {workOrder.workOrderStatus}</Accordion.Header>
-        <Accordion.Body>
-            
-         {workOrder.description}
-         <Button variant="info" onClick={navigateToWorkOrder}>Go to Work Order</Button>{' '}
-        </Accordion.Body>
-      </Accordion.Item>
+        <Card style={{ width: "18rem" }}>
+      {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+      <Card.Body>
+        <Card.Title>{workOrder.title} | {workOrder.status}</Card.Title>
+        <Card.Text>
+          <span>
+            {workOrder.description}
+          </span>
+        </Card.Text>
+        <Button variant="info" onClick={navigateToWorkOrder}>Go to Work Order</Button>{' '}
+      </Card.Body>
+    </Card>
         </>
     )
 

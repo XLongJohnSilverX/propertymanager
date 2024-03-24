@@ -51,3 +51,16 @@ PropertyManager
     The Property Management Web App will help property managers to save time, reduce costs, and improve communication.
     The app will provide a single platform for property management tasks, reducing the need for multiple tools and software.
     The app will be scalable and customizable, allowing property managers to add new features and functionality as their business grows.
+
+    Lease
+    -ID
+    -isSigned
+    -rentList[] - generate list of rent payments for lease term for now 01/01, 02/01, etc;
+    -unitId
+    -tenantIdList[] - list with tenant ids
+    -petIdList[] - list of pets
+    -startDate
+    -endDate
+    -rentAmount
+    -deposit amount
+    

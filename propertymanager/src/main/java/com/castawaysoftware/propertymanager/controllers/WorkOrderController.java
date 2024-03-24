@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @RestController
 public class WorkOrderController {
@@ -42,4 +45,13 @@ public class WorkOrderController {
     public List<WorkOrder> getWorkOrdersByUnitId(@PathVariable Long id){
         return WORKORDERSERVICE.getWorkOrdersByUnitId(id);
     }
+
+    @CrossOrigin
+    @PostMapping("/workorder/")
+    public WorkOrder newWorkOrder(@RequestBody WorkOrder entity) {
+        //TODO: process POST request
+        
+        return WORKORDERSERVICE.newWorkOrder(entity);
+    }
+    
 }

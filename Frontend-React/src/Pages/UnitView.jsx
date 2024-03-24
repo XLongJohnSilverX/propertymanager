@@ -18,12 +18,13 @@ import RentItem from "../components/RentItem";
 function UnitView() {
   const { id } = useParams();
   const [rentList, setRentList] = useState([{}]);
+  const [workOrderList, setWorkOrderList] = useState([{}]);
   const [unit, setUnit] = useState({
     id: "",
     unitIdentifier: "",
     tenantList: [],
     petList: [],
-    workOrderList: [],
+    
     unitDescription: "",
     numberOfBeds: "",
     numberOfBaths: "",
@@ -38,6 +39,11 @@ function UnitView() {
       .then((response) => response.json())
       .then((data) => setUnit(data))
 
+      .catch((error) => console.error(error));
+
+      fetch("http://localhost:8080/workorder/byunit/" + id + "/", { mode: "cors" })
+      .then((response) => response.json())
+      .then((data) => setWorkOrderList(data))
       .catch((error) => console.error(error));
 
     fetch("http://localhost:8080/rent/byunit/" + id + "/", { mode: "cors" })
@@ -89,13 +95,13 @@ function UnitView() {
               })}
             </Accordion.Body>
           </Accordion.Item>
+          
           <Accordion.Item eventKey="2" >
             <Accordion.Header>Work Orders</Accordion.Header>
             <Accordion.Body>
-              {unit.workOrderList.map((workOrder) => {
-                return (
-                  <WorkOrderItem key={workOrder.id} workOrder={workOrder} />
-                );
+              {workOrderList.map((workOrder) => {
+                return <WorkOrderItem key={workOrder.id} workOrder={workOrder} />
+              
               })}
             </Accordion.Body>
           </Accordion.Item>
