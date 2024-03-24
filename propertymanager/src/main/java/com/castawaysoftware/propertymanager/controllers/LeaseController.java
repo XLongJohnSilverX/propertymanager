@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 
@@ -44,5 +46,11 @@ public class LeaseController {
         
         return LEASE_SERVICE.updateLease(entity);
     }
+    @CrossOrigin
+    @GetMapping("/lease/byunit/{unitId}/")
+    public List<Lease> getLeaseByUnitId(@PathVariable Long unitId) {
+        return LEASE_SERVICE.getLeaseByUnitId(unitId);
+    }
+    
     
 }

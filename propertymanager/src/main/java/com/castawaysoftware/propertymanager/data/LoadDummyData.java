@@ -83,7 +83,7 @@ public class LoadDummyData {
     
             rentRepository.save(foo);
 
-            Lease fizz = new Lease(1l, LocalDate.of(2024, 1, 1), LocalDate.now(), 850, 500, rentService ); 
+            Lease fizz = new Lease(1l, LocalDate.of(2024, 1, 1), LocalDate.of(2025, 1,1), 850, 500, rentService ); 
            leaseRepository.save(fizz);
             log.info("Preloading " + repository.save(new Property("Bel Air", address, unitList,storageList,  5000)) + workOrderRepository.save(workOrder));
 

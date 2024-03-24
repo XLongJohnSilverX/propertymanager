@@ -41,6 +41,7 @@ public class LeaseService {
     public Lease getLeaseById(Long id) {
         return LEASE_REPOSITORY.findById(id).orElse(null);
     }
+    
 
     /**
      * Creates a new Lease.

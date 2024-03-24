@@ -17,7 +17,10 @@ import ApplianceItem from "../components/ApplianceItem";
 import RentItem from "../components/RentItem";
 function UnitView() {
   const { id } = useParams();
-  const [rentList, setRentList] = useState([{}]);
+  const [lease, setLease] = useState([{
+    id: '',
+    rentList:[{}],
+  }]);
   const [workOrderList, setWorkOrderList] = useState([{}]);
   const [unit, setUnit] = useState({
     id: "",
@@ -46,9 +49,11 @@ function UnitView() {
       .then((data) => setWorkOrderList(data))
       .catch((error) => console.error(error));
 
-    fetch("http://localhost:8080/rent/byunit/" + id + "/", { mode: "cors" })
+    fetch("http://localhost:8080/lease/byunit/" + id + "/", { mode: "cors" })
+    .then(console.log("Calling server"))
     .then((response) => response.json())
-    .then((data) => setRentList(data))
+    .then((data) => setLease(data))
+   
     .catch((error) => console.error(error));
   }, []);
 
@@ -89,9 +94,11 @@ function UnitView() {
           <Accordion.Item eventKey="4" >
             <Accordion.Header>Rent Payment and Information</Accordion.Header>
             <Accordion.Body>
-              
-              {rentList.map((rent) => {
-                return <RentItem key={rent.id} rent={rent} />;
+              {/* TODO: make this work when there has been multiple leases and only show current lease
+              may need to add field to lease.
+              */}
+              {lease[0].rentList.map((rent) => {
+           return <RentItem key={rent.id} rent={rent} />;
               })}
             </Accordion.Body>
           </Accordion.Item>
