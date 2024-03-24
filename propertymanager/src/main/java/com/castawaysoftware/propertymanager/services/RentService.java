@@ -1,7 +1,10 @@
 package com.castawaysoftware.propertymanager.services;
 import com.castawaysoftware.propertymanager.data.Rent;
+import java.util.ArrayList;
+import org.hibernate.mapping.Array;
+import java.time.LocalDate;
 import java.util.List;
-
+import java.time.temporal.*;
 import com.castawaysoftware.propertymanager.repositories.RentRepository;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +36,19 @@ public class RentService {
     }
     public List<Rent> getRentsByUnitId(Long id) {
         return RENT_REPOSITORY.getRentsByUnitId(id);
+    }
+
+    public List<Rent> generateRentListForNewLease(Long unitId, LocalDate startDate, LocalDate endDate,  int rentAmount, int depositAmount) {
+       List<Rent> rentList = new ArrayList<>(); 
+               long numberOfMonths = ChronoUnit.MONTHS.between(startDate, endDate);
+        
+        for (long i = 0 ; i < numberOfMonths; i++) {
+            Rent newRent = new Rent(unitId, startDate.plusMonths(i), null, false, false, rentAmount);
+            rentList.add(RENT_REPOSITORY.save(newRent));
+
+        }
+        
+        return rentList;
     }
 
 }
