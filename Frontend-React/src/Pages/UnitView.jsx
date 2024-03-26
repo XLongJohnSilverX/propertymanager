@@ -15,6 +15,11 @@ import PetItem from "../components/PetItem";
 import ListGroup from "react-bootstrap/ListGroup";
 import ApplianceItem from "../components/ApplianceItem";
 import RentItem from "../components/RentItem";
+import UnitInfoItem from "../components/UnitInfoItem";
+
+import Form from 'react-bootstrap/Form';
+import Modal from 'react-bootstrap/Modal';
+
 function UnitView() {
   const { id } = useParams();
   const [lease, setLease] = useState([{
@@ -57,39 +62,124 @@ function UnitView() {
     .catch((error) => console.error(error));
   }, []);
 
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  function editSuccess() {
+    alert("Unit was edited successfully!");
+  }
+
+  function saveChanges() {
+    
+     let foo = {...unit};
+    foo.unitIdentifier = document.getElementById("editForm.unitIdentifier").value;
+    foo.unitDescription = document.getElementById("editForm.unitDescription").value;
+    foo.numberOfBeds = document.getElementById("editForm.numberOfBeds").value;
+    foo.numberOfBaths = document.getElementById("editForm.numberOfBaths").value;
+    foo.squareFeet = document.getElementById("editForm.squareFeet").value;
+     
+    
+    
+    handleClose();
+    fetch("http://localhost:8080/unit/" + id + "/", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(foo),
+    })
+      .then((response) => response.json())
+      .then((data) => setUnit(data))
+      .catch((error) => console.error(error))
+      .then(editSuccess);
+  }
+
   return (
     <>
       <NavbarComponent />
       <div className="d-inline-flex justify-content-between flex-row w-100 p-3">
         <h1>Unit: {unit.unitIdentifier}</h1>
-        <Button variant="primary">Edit</Button>
+        <Button variant="primary" onClick={handleShow}>
+        Edit Unit
+      </Button>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Edit Unit</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3" controlId="editForm.unitIdentifier">
+              <Form.Label>Unit Identifier</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="I. E. 101"
+                defaultValue={unit.unitIdentifier}
+                autoFocus
+              />
+            </Form.Group>
+            <Form.Group
+              className="mb-3"
+              controlId="editForm.unitDescription"
+            >
+              <Form.Label>Unit Description</Form.Label>
+              <Form.Control as="textarea" rows={3} defaultValue={unit.unitDescription}/>
+            </Form.Group>
+            <Form.Group
+              className="mb-3"
+              controlId="editForm.numberOfBeds"
+            >
+              <Form.Label>Number of Beds</Form.Label>
+              <Form.Control
+                type="text"
+                
+                defaultValue={unit.numberOfBeds}
+                autoFocus
+              />
+            </Form.Group>
+            <Form.Group
+              className="mb-3"
+              controlId="editForm.numberOfBaths"
+            >
+              <Form.Label>Number of Baths</Form.Label>
+              <Form.Control
+                type="text"
+                
+                defaultValue={unit.numberOfBaths}
+                autoFocus
+              />
+            </Form.Group>
+            <Form.Group
+              className="mb-3"
+              controlId="editForm.squareFeet"
+            >
+              <Form.Label>squareFeet</Form.Label>
+              <Form.Control
+                type="text"
+                
+                defaultValue={unit.squareFeet }
+                autoFocus
+              />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={saveChanges}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
       </div>
 
       <div>
         <Accordion defaultActiveKey={[""]} >
-          <Accordion.Item eventKey="0">
-            <Accordion.Header>Unit Information</Accordion.Header>
-            <Accordion.Body>
-              {unit.unitDescription}
-              <ListGroup>
-                <ListGroup.Item>
-                  {unit.numberOfBeds} bed(s), {unit.numberOfBaths} bath(s) |{" "}
-                  {unit.squareFeet} sq. ft.
-                </ListGroup.Item>
-                <ListGroup.Item>
-                  <Accordion>
-                    {unit.appliances.map((appliance) => {
-                      return (
-                        <ApplianceItem
-                          key={appliance.id}
-                          appliance={appliance}
-                        />
-                      );
-                    })}
-                  </Accordion>
-                </ListGroup.Item>
-              </ListGroup>
-            </Accordion.Body>
+        <Accordion.Item eventKey="0">
+          <UnitInfoItem unit={unit} />
           </Accordion.Item>
           <Accordion.Item eventKey="4" >
             <Accordion.Header>Rent Payment and Information</Accordion.Header>

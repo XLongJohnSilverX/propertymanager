@@ -44,6 +44,7 @@ public class RentService {
         
         for (long i = 0 ; i < numberOfMonths; i++) {
             Rent newRent = new Rent(unitId, startDate.plusMonths(i), null, false, false, rentAmount);
+            System.out.println("NUMBER OF MONTHS:" + startDate.plusMonths(i));
             rentList.add(RENT_REPOSITORY.save(newRent));
 
         }
