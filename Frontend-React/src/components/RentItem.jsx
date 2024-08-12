@@ -7,45 +7,46 @@ import Button from "react-bootstrap/Button";
 
 function RentItem({ rent }) {
   const dueDate = new Date(rent.dueDate);
+  
   var monthName;
   var month = dueDate.getMonth();
   
 console.log("due", month);
   switch (month) {
-    case 1:
+    case 0:
       monthName = "January";
       break;
-    case 2:
+    case 1:
       monthName = "February";
       break;
-    case 3:
+    case 2:
       monthName = "March";
       break;
-    case 4:
+    case 3:
       monthName = "April";
       break;
-    case 5:
+    case 4:
       monthName = "May";
       break;
-    case 6:
+    case 5:
       monthName = "June";
       break;
-    case 7:
+    case 6:
       monthName = "July";
       break;
-    case 8:
+    case 7:
       monthName = "August";
       break;
-    case 9:
+    case 8:
       monthName = "September";
       break;
-    case 10:
+    case 9:
       monthName = "October";
       break;
-    case 11:
+    case 10:
       monthName = "November";
       break;
-    case 12:
+    case 11:
       monthName = "December";
       break;
     default:
@@ -97,7 +98,9 @@ console.log("due", month);
     );
   }
   else {
+    // console.log("Loading CARD! " + monthName);
     return (
+      
       <>
        <Card style={{ width: "100%" }}>
       {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
